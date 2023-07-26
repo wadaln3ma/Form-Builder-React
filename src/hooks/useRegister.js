@@ -10,7 +10,9 @@ export const useRegister = ()=>{
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('http://localhost:5000/api/users/register', {
+    const baseUrl = "https://form-builder-api-node.vercel.app"
+
+    const response = await fetch(`${baseUrl}/api/users/register`, {
       method: 'POST',
       headers: {
         'Access-Control-Allow-Origin': '*',

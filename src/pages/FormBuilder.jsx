@@ -7,7 +7,7 @@ import { useAuthContext } from "../hooks/useAuthContext"
 import Switch from "react-switch"
 import { toast } from 'react-toastify';
 
-  
+const baseUrl = "https://form-builder-api-node.vercel.app"
 
 const FormBuilder = ()=> {
   
@@ -24,7 +24,7 @@ const FormBuilder = ()=> {
   useEffect(()=>{
     const fetchFormData = async ()=>{
     
-      const response = await fetch(`http://localhost:5000/api/form/${id}`, {
+      const response = await fetch(`${baseUrl}/api/form/${id}`, {
         headers: {
           'Access-Control-Allow-Origin': '*',
           'Authorization': `Bearer ${user.token}`
@@ -138,7 +138,7 @@ const FormBuilder = ()=> {
       questions: formData
     }
 
-    const response = await fetch('http://localhost:5000/api/form/add',{
+    const response = await fetch(`${baseUrl}/api/form/add`,{
       method: 'POST',
       body: JSON.stringify(formToSave),
       headers: {
@@ -186,7 +186,7 @@ const FormBuilder = ()=> {
     setFormData([...formData])
   }
 
-  const resolveAfter3Sec = new Promise(resolve => setTimeout(resolve, 4000));
+  const resolveAfter3Sec = new Promise(resolve => setTimeout(resolve, 5000));
 
   return (
     <div className="w-full h-screen flex flex-col items-center justify-between">
@@ -202,7 +202,7 @@ const FormBuilder = ()=> {
                     onClick={(e) => changeTitleColor(e, 'red-500')}>
                     Red
                   </button>
-                  <button className="cursor-pointer bg-green-500 rounded-lg mx-8 px-4 py-1 text-center text-white"
+                  <button className="cursor-pointer bg-gray-500 rounded-lg mx-8 px-4 py-1 text-center text-white"
                     onClick={(e) => changeTitleColor(e, 'gray-500')}>
                     Gray
                   </button>

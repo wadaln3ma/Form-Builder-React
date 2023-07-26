@@ -13,9 +13,11 @@ const Home = ()=>{
   const {user} = useAuthContext()
   const id = uuid()
 
+  const baseUrl = "https://form-builder-api-node.vercel.app"
+
   useEffect(()=>{
     const fetchForms = async ()=>{
-        const response = await fetch('http://localhost:5000/api/form/all', {
+        const response = await fetch(`${baseUrl}/api/form/all`, {
           headers: {
             'Access-Control-Allow-Origin': '*',
             'Authorization': `Bearer ${user.token}`

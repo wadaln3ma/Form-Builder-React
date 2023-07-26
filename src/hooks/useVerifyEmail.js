@@ -9,7 +9,9 @@ export const useVerifyEmail = ()=>{
     setIsLoading(true)
     setError(null)
 
-    const response = await fetch('http://localhost:5000/api/auth/otp/verifyMail', {
+    const baseUrl = "https://form-builder-api-node.vercel.app"
+
+    const response = await fetch(`${baseUrl}/api/auth/otp/verifyMail`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({email, otp})

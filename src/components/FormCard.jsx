@@ -8,9 +8,9 @@ const FormCard = ({formTitle, formId})=> {
   const { dispatch } = useFormContext()
 
   const deleteForm = async ()=>{
-    const url = `http://localhost:5000/api/form/${formId}`
+    const baseUrl = `https://form-builder-api-node.vercel.app/api/form/${formId}`
     
-    const response = await fetch(url ,{
+    const response = await fetch(baseUrl ,{
       method: 'DELETE',
       headers: {
         'Access-Control-Allow-Origin': '*',
